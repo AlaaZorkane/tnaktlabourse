@@ -1,6 +1,5 @@
 const fs = require('fs');
 const got = require('got')
-// const sleep = require('sleep')
 const credentials = {
 	client: {
 		id: 'b889fbbd24fff204cc72870ef4edc3326960de9c3c587a5cad5296b36f806486',
@@ -12,14 +11,8 @@ const credentials = {
 };
 const oauth2 = require('simple-oauth2').create(credentials);
 const config = {
-	promo: "2019-10"
+	promo: "2019-09-ben"
 };
-function msleep(n) {
-	Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n);
-}
-function sleep(n) {
-	msleep(n * 1000);
-}
 (async () => {
 	let filtered = [];
 	let token;
@@ -32,7 +25,7 @@ function sleep(n) {
 	let page = 1;
 	const gibUsers = async (page) => new Promise(async (res, rej) => {
 		try {
-			const users = (await got(`/v2/cursus/21/cursus_users?filter[campus_id]=16&page[number]=${page}&page[size]=100`, {
+			const users = (await got(`/v2/cursus/21/cursus_users?filter[campus_id]=21&page[number]=${page}&page[size]=100`, {
 				baseUrl,
 				headers: {
 					Authorization: `Bearer ${token}`,
